@@ -1,5 +1,5 @@
-import re
 import inspect
+import re
 
 
 def get_weather(city: str) -> str:
@@ -42,6 +42,8 @@ def calculate(expression: str) -> str:
         return "计算失败：表达式为空"
     if not _ALLOWED.match(expression):
         return f"计算失败：{expression!r}含有非法字符，只允许数字和+ - * / () 运算符"
+    if "**" in expression:
+        return f"计算失败：{expression!r}不支持幂运算，只允许+ - * / () 运算符"
     try:
         result = eval(expression, {"__builtins__": {}}, {})
     except ZeroDivisionError:
@@ -118,4 +120,5 @@ if __name__ == "__main__":
     print(calculate("28-25.0"))
     print(calculate("28/0"))
     print(calculate("hello"))
+    print(calculate("2**3"))
     print(check_tools(TOOLS, TOOL_FUNCS))
