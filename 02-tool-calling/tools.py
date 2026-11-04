@@ -121,4 +121,6 @@ if __name__ == "__main__":
     print(calculate("28/0"))
     print(calculate("hello"))
     print(calculate("2**3"))
+    print(calculate("9**9**9"))
+    print(calculate("5*5*5"))
     print(check_tools(TOOLS, TOOL_FUNCS))
